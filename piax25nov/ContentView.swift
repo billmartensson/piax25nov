@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import Firebase
 
 struct ContentView: View {
     
@@ -13,8 +14,13 @@ struct ContentView: View {
     
     @State var showOther = false
     
+    @State var showLogin = false
+    
     var body: some View {
         VStack {
+            
+               
+            
             Text("Hello, world!")
                 .padding()
             
@@ -41,6 +47,19 @@ struct ContentView: View {
             
         }
         .padding(.horizontal)
+        .onAppear(perform: {
+            if(Auth.auth().currentUser == nil)
+            {
+                print("INTE INLOGGAD")
+                showLogin = true
+            } else {
+                print("ÄR INLOGGAD")
+                showLogin = false
+            }
+        })
+        .fullScreenCover(isPresented: $showLogin) {
+            LoginView()
+        }
         /*
         .onAppear(perform: {
             
