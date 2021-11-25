@@ -8,9 +8,48 @@
 import SwiftUI
 
 struct ContentView: View {
+    
+    @AppStorage("thename") var username = ""
+    
+    @State var showOther = false
+    
     var body: some View {
-        Text("Hello, world!")
+        VStack {
+            Text("Hello, world!")
+                .padding()
+            
+            
+            TextField("Username", text: $username)
+            
+            Button(action: {
+                
+                UserDefaults.standard.set(username, forKey: "thename")
+                
+            }) {
+                Text("Save")
+            }.padding()
+            
+            Button(action: {
+                showOther = true
+            }) {
+                Text("Open other")
+            }
             .padding()
+            .sheet(isPresented: $showOther) {
+                OtherView()
+            }
+            
+        }
+        .padding(.horizontal)
+        /*
+        .onAppear(perform: {
+            
+            if let thesavedname = UserDefaults.standard.string(forKey: "thename") {
+                username = thesavedname
+            }
+            
+        })
+         */
     }
 }
 
