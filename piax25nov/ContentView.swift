@@ -45,6 +45,21 @@ struct ContentView: View {
                 OtherView()
             }
             
+            
+            Button(action: {
+                do {
+                    try Auth.auth().signOut()
+                    showLogin = true
+                } catch {
+                    
+                }
+                
+            }) {
+                Text("Logout")
+            }.padding()
+
+            
+            
         }
         .padding(.horizontal)
         .onAppear(perform: {

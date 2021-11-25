@@ -15,28 +15,92 @@ struct LoginView: View {
     @State var emailtextfield = ""
     @State var passwordtextfield = ""
     
+    @State var showThePassword = false
     
     var body: some View {
-        VStack {
-            Text("LOGIN")
-            TextField("Email", text: $emailtextfield)
-            
-            TextField("Password", text: $passwordtextfield)
-            
-            Button(action: {
-                letsRegister()
-            }) {
-                Text("Register")
-            }.padding()
-            
-            Button(action: {
-                letsLogin()
-            }) {
-                Text("Login")
-            }.padding()
+        ScrollView {
+            VStack {
+                
+                Text("LOGIN")
 
-            
-        }.padding()
+                Spacer()
+
+                Group {
+                    TextField("Email", text: $emailtextfield)
+                        .keyboardType(.emailAddress)
+                        .disableAutocorrection(true)
+                        .padding()
+
+                    TextField("Email", text: $emailtextfield)
+                        .keyboardType(.emailAddress)
+                        .disableAutocorrection(true)
+                        .padding()
+
+                    
+                    TextField("Email", text: $emailtextfield)
+                        .keyboardType(.emailAddress)
+                        .disableAutocorrection(true)
+                        .padding()
+
+                    TextField("Email", text: $emailtextfield)
+                        .keyboardType(.emailAddress)
+                        .disableAutocorrection(true)
+                        .padding()
+
+                    TextField("Email", text: $emailtextfield)
+                        .keyboardType(.emailAddress)
+                        .disableAutocorrection(true)
+                        .padding()
+
+                    TextField("Email", text: $emailtextfield)
+                        .keyboardType(.emailAddress)
+                        .disableAutocorrection(true)
+                        .padding()
+                }
+                
+                
+
+                
+                TextField("Email", text: $emailtextfield)
+                    .keyboardType(.emailAddress)
+                    .disableAutocorrection(true)
+                    .padding()
+                
+                if(showThePassword)
+                {
+                    TextField("Password", text: $passwordtextfield)
+                } else {
+                    SecureField("Password", text: $passwordtextfield)
+                }
+                
+                
+                
+                Button(action: {
+                    showThePassword.toggle()
+                }) {
+                    Text("Show password")
+                }
+                
+                
+                Button(action: {
+                    letsRegister()
+                }) {
+                    Text("Register")
+                }.padding()
+                
+                Button(action: {
+                    letsLogin()
+                }) {
+                    Text("Login")
+                }.padding()
+
+                
+                Text("Längst ner")
+                
+            }.padding()
+        }
+        
+        
     }
     
     func letsRegister()
